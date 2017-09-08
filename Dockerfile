@@ -23,7 +23,7 @@ ENV JAVA_OPTS="${JAVA_OPTS} -DEXTERNAL_CONFIG_DIR=${TOMCAT_HOME}/app_configs" \
 
 RUN \rm -rf ${TOMCAT_HOME}/webapps/ROOT \
     && mkdir -p ${TOMCAT_HOME}/webapps/ROOT \
-    && curl --fail --location --retry 3 https://doc-14-bc-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/2ee0p38j82p17nv0ketg5vtfobp3ku5i/1504144800000/05713710580929286757/*/0B8p5w2HKib3Oclk4VUlOTm1SUXc?e=download \
+    && curl --fail --location --retry 3 https://gitlab.com/primeton-oss/devops/raw/master/devops.war \
         -o /tmp/devops.war \
     && unzip /tmp/devops.war -d ${TOMCAT_HOME}/webapps/ROOT \
     && \rm -f /tmp/devops.war \
