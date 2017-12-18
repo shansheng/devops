@@ -14,6 +14,7 @@ FROM primetoninc/tomcat:7.0
 EXPOSE 6200
 
 ENV JAVA_OPTS="${JAVA_OPTS} -DEXTERNAL_CONFIG_DIR=${TOMCAT_HOME}/app_configs" \
+    DEVOPS_DOWNLOAD_URL="ftp://product:primeton@192.168.1.12/DevOps51/dist/devops-dist/devops/files/devops.war" \
     MYSQL_DATABASE=devops \
     MYSQL_USER=devops \
     MYSQL_PASSWORD=devops \
@@ -23,7 +24,7 @@ ENV JAVA_OPTS="${JAVA_OPTS} -DEXTERNAL_CONFIG_DIR=${TOMCAT_HOME}/app_configs" \
 
 RUN \rm -rf ${TOMCAT_HOME}/webapps/ROOT \
     && mkdir -p ${TOMCAT_HOME}/webapps/ROOT \
-    && curl --fail --location --retry 3 https://gitlab.com/primeton-oss/devops/raw/master/devops.war \
+    && curl --fail --location --retry 3 ${DEVOPS_DOWNLOAD_URL} \
         -o /tmp/devops.war \
     && unzip /tmp/devops.war -d ${TOMCAT_HOME}/webapps/ROOT \
     && \rm -f /tmp/devops.war \
