@@ -23,7 +23,7 @@ ENV JAVA_OPTS="${JAVA_OPTS} -DEXTERNAL_CONFIG_DIR=${TOMCAT_HOME}/app_configs" \
 
 RUN \rm -rf ${TOMCAT_HOME}/webapps/ROOT \
     && mkdir -p ${TOMCAT_HOME}/webapps/ROOT \
-    && curl --fail --location --retry 3 http://39.106.139.221:8080/default/devops.war \
+    && curl --fail --location --retry 3 http://139.106.139.221:8080/default/devops.war \
         -o /tmp/devops.war \
     && unzip /tmp/devops.war -d ${TOMCAT_HOME}/webapps/ROOT \
     && \rm -f /tmp/devops.war \
